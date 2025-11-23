@@ -55,6 +55,7 @@ htmlcov/
 .idea/
 *.pro.user*
 .qtc*
+Helloworld/.qtcreator/
 .qtcreator/
 .qtcreator
 .qtproject
