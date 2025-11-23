@@ -1,4 +1,4 @@
-# PySide Widgets Project Examples
+# PyQt/PySide Examples
 
 A collection of small PySide/PyQt example applications. Each example should live in its own folder (for example `Helloworld/`, `Calculator/`, `FormExample/`, etc.) and follow the same structure: a `.ui` file (optional), an application entry point, optional generated UI Python module, and supporting modules.
 
@@ -9,7 +9,7 @@ A collection of small PySide/PyQt example applications. Each example should live
 
 ## Setup (Windows / PowerShell)
 
-This project includes VS Code task automation that performs the usual setup and run steps (create venv, install deps, compile the UI, run the app). See the **VS Code automation** section below for details. If you prefer not to use VS Code, the manual steps are still valid.
+This project includes VS Code task automation that performs the usual setup and run steps (create venv, install deps, compile the UI, run the app). See the **VS Code automation** section for example Helloworld/README.md for more details . If you prefer not to use VS Code, the manual steps are still valid.
 
 (See individual example folders for overview, UI generation, run instructions and VS Code tasks — for example `Helloworld/README.md`.)
 
@@ -31,7 +31,6 @@ This project includes VS Code task automation that performs the usual setup and 
 		.qtcreator/         # Qt Creator settings (usually ignored)
 		venv/               # optional local virtualenv (ignored)
 ```
-
 
 
 ## Contributing
