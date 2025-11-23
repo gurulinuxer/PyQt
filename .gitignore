@@ -53,6 +53,16 @@ htmlcov/
 *.sublime-workspace
 *.sublime-project
 .idea/
+*.pro.user*
+.qtc*
+.qtcreator/
+.qtcreator
+.qtproject
+.qmake.stash
+.qmake.cache
+
+# Qt Creator settings folder
+.qtcreator/
 
 # Generated Qt UI files (created by pyuic/pyside-uic)
 # Ignore generated Python UI modules like `ui_form.py`
