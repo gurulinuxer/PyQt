@@ -1,0 +1,73 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+venv*/
+pip-wheel-metadata/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage
+.coverage
+.coverage.*
+.pytest_cache/
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pyright / mypy cache
+.mypy_cache/
+
+# Caches
+.cache/
+htmlcov/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# IDEs and editors (allow .vscode to be tracked)
+!/.vscode/
+*.sublime-workspace
+*.sublime-project
+.idea/
+
+# Generated Qt UI files (created by pyuic/pyside-uic)
+# Ignore generated Python UI modules like `ui_form.py`
+ui_*.py
+ui_*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# OneDrive/temp files
+~$*
+~*.tmp
+
+# Misc
+*.egg
+*.egg-info/

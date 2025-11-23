@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Create virtual environment",
+      "type": "shell",
+      "command": "python",
+      "args": [
+        "-m",
+        "venv",
+        "venv"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Helloworld"
+      },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Install dependencies from requirements.txt",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& { .\\venv\\Scripts\\Activate.ps1; pip install -r requirements.txt }"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Helloworld"
+      },
+      "dependsOn": ["Create virtual environment"],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Compile UI file",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& { .\\venv\\Scripts\\Activate.ps1; pyside6-uic form.ui -o ui_form.py }"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Helloworld"
+      },
+      "dependsOn": ["Install dependencies from requirements.txt"],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run HelloWorld.py",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& { .\\venv\\Scripts\\Activate.ps1; python helloworld.py }"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/Helloworld"
+      },
+      "dependsOn": ["Compile UI file"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run all steps",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Create virtual environment",
+        "Install dependencies from requirements.txt",
+        "Compile UI file",
+        "Run HelloWorld.py"
+      ],
+      "problemMatcher": []
+    }
+  ]
+}
