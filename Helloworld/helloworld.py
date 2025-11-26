@@ -18,7 +18,7 @@ class Helloworld(QMainWindow):
 
         self.backend = BackendFunctions()
 
-        self.ui.pushButton_hello.clicked.connect(self.backend.open_helloworld_dialog)
+        self.ui.clickme_pushButton.clicked.connect(self.backend.open_helloworld_dialog)
 
 
 if __name__ == "__main__":
