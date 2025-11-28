@@ -133,7 +133,7 @@
            <item>
             <widget class="QTabWidget" name="button_tabWidget">
              <property name="currentIndex">
-              <number>0</number>
+              <number>2</number>
              </property>
              <widget class="QWidget" name="Button_tab">
               <attribute name="title">
@@ -242,6 +242,29 @@
                  <height>201</height>
                 </rect>
                </property>
+              </widget>
+              <widget class="QScrollArea" name="scrollArea">
+               <property name="geometry">
+                <rect>
+                 <x>850</x>
+                 <y>290</y>
+                 <width>21</width>
+                 <height>201</height>
+                </rect>
+               </property>
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>19</width>
+                  <height>199</height>
+                 </rect>
+                </property>
+               </widget>
               </widget>
              </widget>
              <widget class="QWidget" name="Input_Display_widget_tab">
@@ -402,12 +425,48 @@
                  <x>0</x>
                  <y>20</y>
                  <width>871</width>
-                 <height>221</height>
+                 <height>238</height>
                 </rect>
                </property>
                <layout class="QHBoxLayout" name="horizontalLayout">
                 <item>
+                 <widget class="QCalendarWidget" name="calendarWidget"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_4">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
                  <widget class="QLCDNumber" name="lcdNumber"/>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_5">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QProgressBar" name="progressBar">
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </widget>
@@ -415,9 +474,9 @@
                <property name="geometry">
                 <rect>
                  <x>0</x>
-                 <y>250</y>
+                 <y>260</y>
                  <width>871</width>
-                 <height>241</height>
+                 <height>231</height>
                 </rect>
                </property>
               </widget>
