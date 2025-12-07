@@ -63,6 +63,9 @@ Helloworld/.qtcreator/*
 .qmake.stash
 .qmake.cache
 
+# Explicitly ignore settings
+.vscode/settings.json
+
 # Qt Creator settings folder
 .qtcreator/
 
