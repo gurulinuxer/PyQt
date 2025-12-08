@@ -2,104 +2,177 @@ import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
-ScrollView {
-    contentWidth: parent.width
-    contentHeight: columnLayout.height
-    
+Page {
+    id: inputTab
+
     ColumnLayout {
-        id: columnLayout
+        anchors.fill: parent
+        anchors.margins: 8
         spacing: 10
-        padding: 10
-        
+
+        // TOP: all input widgets with fixed height
         RowLayout {
+            id: inputsRow
             spacing: 10
             Layout.fillWidth: true
-            
+            Layout.preferredHeight: 140   // fixed height so widgets don't move
+
             ComboBox {
                 id: comboBox
                 model: ["Option 1", "Option 2", "Option 3"]
-                Layout.fillWidth: true
+                Layout.preferredWidth: 150
+                onCurrentIndexChanged: {
+                    logText.appendText(
+                        backend.logComboSelection(
+                            "Input ComboBox",
+                            currentText,
+                            currentIndex
+                        )
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
-            FontComboBox {
+
+            ComboBox {
                 id: fontComboBox
-                Layout.fillWidth: true
+                model: ["Arial", "Times New Roman", "Courier New"]
+                Layout.preferredWidth: 150
+                onCurrentIndexChanged: {
+                    logText.appendText(
+                        backend.logComboSelection(
+                            "Font ComboBox",
+                            currentText,
+                            currentIndex
+                        )
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
+
             Dial {
                 id: dial
+                from: 0
+                to: 100
                 value: 50
-                minimumValue: 0
-                maximumValue: 100
                 Layout.preferredHeight: 100
                 Layout.preferredWidth: 100
+                onValueChanged: {
+                    logText.appendText(
+                        backend.logDialValue("Input Dial", Math.round(value))
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
+
             Slider {
                 id: verticalSlider
                 orientation: Qt.Vertical
-                value: 0.5
+                from: 0
+                to: 100
+                value: 50
                 Layout.fillHeight: true
+                onValueChanged: {
+                    logText.appendText(
+                        backend.logSliderValue("Vertical Slider", Math.round(value))
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
+
             Slider {
                 id: horizontalSlider
-                value: 0.5
+                from: 0
+                to: 100
+                value: 50
                 Layout.fillWidth: true
+                onValueChanged: {
+                    logText.appendText(
+                        backend.logSliderValue("Horizontal Slider", Math.round(value))
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
+
             SpinBox {
                 id: spinBox
                 from: 0
                 to: 100
                 value: 50
                 Layout.preferredWidth: 80
+                onValueChanged: {
+                    logText.appendText(
+                        backend.logSpinBoxValue("Input SpinBox", value)
+                    )
+                }
             }
-            
-            Rectangle {
-                width: 1; height: parent.height
-                color: "lightgray"
-            }
-            
+
             Slider {
                 id: progressSlider
-                value: 0.24
-                Layout.fillWidth: true
+                from: 0
+                to: 100
+                value: 24
+                Layout.preferredWidth: 150
+                onValueChanged: {
+                    logText.appendText(
+                        backend.logSliderValue("Progress Slider", Math.round(value))
+                    )
+                }
             }
         }
-        
-        TextEdit {
-            id: descriptionText
-            text: "Input examples demonstration"
-            readOnly: true
+
+        Button {
+            text: "Log input snapshot"
+            Layout.alignment: Qt.AlignLeft
+            onClicked: {
+                var lines = []
+                lines.push(
+                    backend.logComboSelection(
+                        "Input ComboBox",
+                        comboBox.currentText,
+                        comboBox.currentIndex
+                    )
+                )
+                lines.push(
+                    backend.logComboSelection(
+                        "Font ComboBox",
+                        fontComboBox.currentText,
+                        fontComboBox.currentIndex
+                    )
+                )
+                lines.push(
+                    backend.logDialValue("Input Dial", Math.round(dial.value))
+                )
+                lines.push(
+                    backend.logSliderValue("Vertical Slider", Math.round(verticalSlider.value))
+                )
+                lines.push(
+                    backend.logSliderValue("Horizontal Slider", Math.round(horizontalSlider.value))
+                )
+                lines.push(
+                    backend.logSpinBoxValue("Input SpinBox", spinBox.value)
+                )
+                lines.push(
+                    backend.logSliderValue("Progress Slider", Math.round(progressSlider.value))
+                )
+                logText.appendText(lines.join("\n"))
+            }
+        }
+
+        // BOTTOM: text browser-style log with auto-scroll, fills remaining space
+        ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            wrapMode: TextEdit.Wrap
+
+            TextArea {
+                id: logText
+                width: parent.width
+                wrapMode: TextArea.Wrap
+                readOnly: true
+
+                function appendText(t) {
+                    if (text.length > 0)
+                        text += "\n"
+                    text += t
+
+                    // move cursor to end; ScrollView will keep latest part visible
+                    cursorPosition = text.length
+                }
+            }
         }
     }
 }

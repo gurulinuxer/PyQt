@@ -7,7 +7,29 @@ Page {
 
     ColumnLayout {
         anchors.fill: parent
+        anchors.margins: 8
+        spacing: 8
 
+        // Top row with Next button on the right
+        RowLayout {
+            Layout.fillWidth: true
+
+            Item { Layout.fillWidth: true }   // spacer pushes button to the right
+
+            Button {
+                id: nextButton
+                text: "Next"
+                Layout.preferredWidth: 120    // bigger button
+                Layout.preferredHeight: 40
+                font.pixelSize: 18
+                onClicked: {
+                    console.log("SecondPage: Next clicked, requesting goToLogin")
+                    backend.back_to_login()
+                }
+            }
+        }
+
+        // Tabs and content below
         TabBar {
             id: tabBar
             Layout.fillWidth: true
@@ -23,7 +45,6 @@ Page {
             Layout.fillHeight: true
             currentIndex: tabBar.currentIndex
 
-            // Each of these files should have root Item/Page (not recursive)
             Loader { source: "ButtonsTab.qml" }
             Loader { source: "DisplayTab.qml" }
             Loader { source: "InputTab.qml" }

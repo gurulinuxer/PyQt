@@ -22,5 +22,11 @@ ApplicationWindow {
             console.log("Main.qml: loginSuccess received, pushing SecondPage")
             stackView.push("components/SecondPage.qml")
         }
+
+        function onGoToLogin() {
+            console.log("Main.qml: goToLogin received, going back to LoginPage")
+            stackView.clear()
+            stackView.push("components/LoginPage.qml")
+        }
     }
 }
