@@ -79,6 +79,27 @@
         "Run HelloWorld.py"
       ],
       "problemMatcher": []
+    },
+    {
+      "label": "Run QML main.py",
+      "type": "shell",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-Command",
+        "& { ..\\Helloworld\\venv\\Scripts\\Activate.ps1; python main.py }"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/qmlproject"
+      },
+      "dependsOn": [
+        "Create virtual environment",
+        "Install dependencies from requirements.txt"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
     }
   ]
 }
