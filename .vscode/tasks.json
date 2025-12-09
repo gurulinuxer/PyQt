@@ -11,7 +11,7 @@
         "venv"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Helloworld"
+        "cwd": "${workspaceFolder}/uiproject"
       },
       "problemMatcher": [],
       "group": "build"
@@ -28,7 +28,7 @@
         "& { .\\venv\\Scripts\\Activate.ps1; pip install -r requirements.txt }"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Helloworld"
+        "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": ["Create virtual environment"],
       "problemMatcher": [],
@@ -46,7 +46,7 @@
         "& { .\\venv\\Scripts\\Activate.ps1; pyside6-uic form.ui -o ui_form.py }"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Helloworld"
+        "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": ["Install dependencies from requirements.txt"],
       "problemMatcher": [],
@@ -64,7 +64,7 @@
         "& { .\\venv\\Scripts\\Activate.ps1; python helloworld.py }"
       ],
       "options": {
-        "cwd": "${workspaceFolder}/Helloworld"
+        "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": ["Compile UI file"],
       "problemMatcher": []
@@ -89,7 +89,7 @@
         "-ExecutionPolicy",
         "Bypass",
         "-Command",
-        "& { ..\\Helloworld\\venv\\Scripts\\Activate.ps1; python main.py }"
+        "& { ..\\uiproject\\venv\\Scripts\\Activate.ps1; python main.py }"
       ],
       "options": {
         "cwd": "${workspaceFolder}/qmlproject"
