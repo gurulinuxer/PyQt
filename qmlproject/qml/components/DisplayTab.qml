@@ -61,7 +61,6 @@ Page {
 
                     // move cursor to end and ensure it is visible
                     cursorPosition = text.length
-                    ensureCursorVisible()
                 }
             }
         }

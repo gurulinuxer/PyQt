@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <circle cx="64" cy="64" r="62" fill="#f0f8ff" stroke="#4facfe" stroke-width="4"/>
+  <circle cx="64" cy="42" r="22" fill="#ffffff"/>
+  <path d="M24,98 C24,74 104,74 104,98" fill="#ffffff"/>
+  <text x="64" y="112" font-family="Arial" font-size="12" text-anchor="middle" fill="#4facfe">User</text>
+</svg>

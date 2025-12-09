@@ -14,12 +14,12 @@ Page {
         RowLayout {
             Layout.fillWidth: true
 
-            Item { Layout.fillWidth: true }   // spacer pushes button to the right
+            Item { Layout.fillWidth: true }   // spacer pushes button to right
 
             Button {
                 id: nextButton
                 text: "Next"
-                Layout.preferredWidth: 120    // bigger button
+                Layout.preferredWidth: 120
                 Layout.preferredHeight: 40
                 font.pixelSize: 18
                 onClicked: {
@@ -29,25 +29,37 @@ Page {
             }
         }
 
-        // Tabs and content below
+        // Tab bar
         TabBar {
             id: tabBar
             Layout.fillWidth: true
+            Layout.preferredHeight: 44    // make tabs taller
 
-            TabButton { text: "Buttons" }
-            TabButton { text: "Display" }
-            TabButton { text: "Input" }
+            TabButton {
+                text: "Buttons"
+                font.pixelSize: 14
+            }
+            TabButton {
+                text: "Input"            // center tab
+                font.pixelSize: 14
+            }
+            TabButton {
+                text: "Display"          // right tab
+                font.pixelSize: 14
+            }
         }
 
+        // Tab contents
         StackLayout {
             id: tabStack
             Layout.fillWidth: true
             Layout.fillHeight: true
+            Layout.topMargin: 4           // small gap below tabs
             currentIndex: tabBar.currentIndex
 
-            Loader { source: "ButtonsTab.qml" }
-            Loader { source: "DisplayTab.qml" }
-            Loader { source: "InputTab.qml" }
+            Loader { source: "ButtonsTab.qml" }   // index 0
+            Loader { source: "InputTab.qml" }     // index 1
+            Loader { source: "DisplayTab.qml" }   // index 2
         }
     }
 }
