@@ -47,6 +47,10 @@ Page {
                 text: "Display"          // right tab
                 font.pixelSize: 14
             }
+            TabButton { 
+                text: "3D";      
+                font.pixelSize: 14 
+            } 
         }
 
         // Tab contents
@@ -60,6 +64,7 @@ Page {
             Loader { source: "ButtonsTab.qml" }   // index 0
             Loader { source: "InputTab.qml" }     // index 1
             Loader { source: "DisplayTab.qml" }   // index 2
+            Loader { source: "ThreeDTab.qml" }    // index 3
         }
     }
 }
