@@ -50,9 +50,22 @@ Page {
                 id: switchDark
                 text: "Dark Mode"
                 checked: false
+                
+                background: Rectangle {
+                    implicitHeight: 48
+                    radius: 4
+                    color: switchDark.checked ? "#E8F5E8" : "#F5F5F5"
+                    
+                    Behavior on color { ColorAnimation { duration: 200 } }
+                }
+                
+                scale: 1.0
+                Behavior on scale { NumberAnimation { duration: 150; easing.type: Easing.InOutQuad } }
+                
                 onToggled: {
-                    backend.logSwitchToggle("Dark Mode", checked)  // Call backend
-                    logText.appendText(`Switch 'Dark Mode' → ${checked ? "ON" : "OFF"}`)
+                    backend.logSwitchToggle("Dark Mode", checked)
+                    logText.appendText(`Dark Mode → ${checked ? "ON" : "OFF"}`)
+                    scale = checked ? 1.1 : 0.95
                 }
             }
 
