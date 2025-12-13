@@ -48,3 +48,13 @@ class QmlBackend(QObject):
     @Slot(str, bool, result=str)
     def logRadioToggle(self, name: str, checked: bool) -> str:
         return self._backend.log_radio_button_toggle(name, checked)
+    @Slot(str, bool, result=str)
+    def logSwitchToggle(self, switchName: str, isChecked: bool) -> str:
+        """Log SwitchDelegate toggle events"""
+        status = "ON" if isChecked else "OFF"
+        message = f"Switch '{switchName}' → {status}"
+        print(f"QML: {message}")
+        return message  # Now returns for QML appendText()
+
+
+

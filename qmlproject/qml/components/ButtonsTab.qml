@@ -45,18 +45,36 @@ Page {
                 }
             }
 
+            // NEW: Switch Delegates
+            SwitchDelegate {
+                id: switchDark
+                text: "Dark Mode"
+                checked: false
+                onToggled: {
+                    backend.logSwitchToggle("Dark Mode", checked)  // Call backend
+                    logText.appendText(`Switch 'Dark Mode' → ${checked ? "ON" : "OFF"}`)
+                }
+            }
+
+            SwitchDelegate {
+                id: switchNotify
+                text: "Notify"
+                checked: true
+                onToggled: {
+                    backend.logSwitchToggle("Notify", checked)
+                    logText.appendText(`Switch 'Notify' → ${checked ? "ON" : "OFF"}`)
+                }
+            }
+
+
             RadioButton {
                 id: radioA
                 text: "Choice A"
                 onToggled: {
                     if (checked)
-                        logText.appendText(
-                            backend.logRadioToggle("Choice A", true)
-                        )
+                        logText.appendText(backend.logRadioToggle("Choice A", true))
                     else
-                        logText.appendText(
-                            backend.logRadioToggle("Choice A", false)
-                        )
+                        logText.appendText(backend.logRadioToggle("Choice A", false))
                 }
             }
 
@@ -65,29 +83,28 @@ Page {
                 text: "Choice B"
                 onToggled: {
                     if (checked)
-                        logText.appendText(
-                            backend.logRadioToggle("Choice B", true)
-                        )
+                        logText.appendText(backend.logRadioToggle("Choice B", true))
                     else
-                        logText.appendText(
-                            backend.logRadioToggle("Choice B", false)
-                        )
+                        logText.appendText(backend.logRadioToggle("Choice B", false))
                 }
             }
         }
 
-        // Log area similar to TextBrowser
-        TextArea {
-            id: logText
+        // Log area with ScrollView (improved scrolling)
+        ScrollView {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            readOnly: true
-            wrapMode: TextArea.Wrap
 
-            function appendText(t) {
-                if (text.length > 0)
-                    text += "\n"
-                text += t
+            TextArea {
+                id: logText
+                readOnly: true
+                wrapMode: TextArea.Wrap
+
+                function appendText(t) {
+                    if (text.length > 0) text += "\n"
+                    text += t
+                    cursorPosition = text.length  // auto-scroll to bottom
+                }
             }
         }
     }
