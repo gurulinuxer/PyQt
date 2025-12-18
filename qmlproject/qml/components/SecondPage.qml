@@ -50,7 +50,12 @@ Page {
             TabButton { 
                 text: "3D";      
                 font.pixelSize: 14 
-            } 
+            }
+            TabButton { 
+                text: "Threads"; 
+                font.pixelSize: 14 
+            }    
+
         }
 
         // Tab contents
@@ -65,6 +70,7 @@ Page {
             Loader { source: "InputTab.qml" }     // index 1
             Loader { source: "DisplayTab.qml" }   // index 2
             Loader { source: "ThreeDTab.qml" }    // index 3
+            Loader { source: "ThreadsTab.qml" }   // index 4
         }
     }
 }
