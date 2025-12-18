@@ -11,23 +11,21 @@ The app shows a login page, then a tabbed “widget explorer” with **Buttons**
 ---
 
 ## Project structure
-
 qmlproject/
 ├─ main.py # Starts QGuiApplication, loads QML, exposes backend
 ├─ modules/
-│ ├─ backend_functions.py # Shared backend logic from the UI project
-│ └─ qml_backend.py # QObject wrapper exposing backend to QML (slots/signals, worker control)
+│ ├─ backend_functions.py # Shared backend logic reused from the UI project
+│ └─ qml_backend.py # QObject wrapper exposing backend to QML (slots/signals, thread worker)
 └─ qml/
-├─ main.qml # ApplicationWindow + StackView (navigation)
+├─ main.qml # ApplicationWindow, menu bar, StackView navigation
 └─ components/
-├─ LoginPage.qml # Login (admin / 1234) → SecondPage
-├─ SecondPage.qml # Tabs + Next button back to login
-├─ ButtonsTab.qml # Button-like widgets + log area
-├─ DisplayTab.qml # Display widgets (progress, value, etc.) + log area
-├─ InputTab.qml # Input widgets (combo, sliders, dial, spinbox) + log area
-└─ ThreeDTab.qml # Pseudo‑3D rotation demo + log area
-undefined
-
+├─ LoginPage.qml # Login screen (admin / 1234) with banner + GitHub link
+├─ SecondPage.qml # Main tabbed page + Next button back to login
+├─ ButtonsTab.qml # Button widgets (buttons, checkboxes, radios) + log area
+├─ InputTab.qml # Input widgets (combos, sliders, dial, spinbox) + log area
+├─ DisplayTab.qml # Display widgets (progress, value display, dial) + log area
+├─ ThreeDTab.qml # Pseudo‑3D rotation demo (rotating square) + log area
+└─ ThreadsTab.qml # QThread worker example with start/stop controls + log area
 
 The **Python backend** is reused as-is from the widgets project, with `qml_backend.QmlBackend` acting as a thin adapter to expose:
 
