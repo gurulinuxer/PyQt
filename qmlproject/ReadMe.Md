@@ -11,6 +11,7 @@ The app shows a login page, then a tabbed “widget explorer” with **Buttons**
 ---
 
 ## Project structure
+```
 qmlproject/
 ├─ main.py # Starts QGuiApplication, loads QML, exposes backend
 ├─ modules/
@@ -26,6 +27,7 @@ qmlproject/
 ├─ DisplayTab.qml # Display widgets (progress, value display, dial) + log area
 ├─ ThreeDTab.qml # Pseudo‑3D rotation demo (rotating square) + log area
 └─ ThreadsTab.qml # QThread worker example with start/stop controls + log area
+```
 
 The **Python backend** is reused as-is from the widgets project, with `qml_backend.QmlBackend` acting as a thin adapter to expose:
 
