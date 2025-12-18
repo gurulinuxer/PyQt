@@ -26,6 +26,7 @@ qmlproject/
 ├─ DisplayTab.qml # Display widgets (progress, value, etc.) + log area
 ├─ InputTab.qml # Input widgets (combo, sliders, dial, spinbox) + log area
 └─ ThreeDTab.qml # Pseudo‑3D rotation demo + log area
+undefined
 
 
 The **Python backend** is reused as-is from the widgets project, with `qml_backend.QmlBackend` acting as a thin adapter to expose:
