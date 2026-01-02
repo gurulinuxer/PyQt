@@ -17,7 +17,7 @@
       "group": "build"
     },
     {
-      "label": "Install UI dependencies from requirements.txt",
+      "label": "Install UI dependencies (Windows)",
       "type": "shell",
       "command": "powershell",
       "args": [
@@ -37,7 +37,7 @@
       "group": "build"
     },
     {
-      "label": "Compile UI file",
+      "label": "Compile UI file (Windows)",
       "type": "shell",
       "command": "powershell",
       "args": [
@@ -51,13 +51,13 @@
         "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": [
-        "Install UI dependencies from requirements.txt"
+        "Install UI dependencies (Windows)"
       ],
       "problemMatcher": [],
       "group": "build"
     },
     {
-      "label": "Run HelloWorld.py",
+      "label": "Run HelloWorld.py (Windows)",
       "type": "shell",
       "command": "powershell",
       "args": [
@@ -71,12 +71,12 @@
         "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": [
-        "Compile UI file"
+        "Compile UI file (Windows)"
       ],
       "problemMatcher": []
     },
     {
-      "label": "Install UI dependencies (WSL)",
+      "label": "Install UI dependencies (WSL/Linux)",
       "type": "shell",
       "command": "bash",
       "args": [
@@ -93,7 +93,7 @@
       "group": "build"
     },
     {
-      "label": "Compile UI file (WSL)",
+      "label": "Compile UI file (WSL/Linux)",
       "type": "shell",
       "command": "bash",
       "args": [
@@ -104,13 +104,13 @@
         "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": [
-        "Install UI dependencies (WSL)"
+        "Install UI dependencies (WSL/Linux)"
       ],
       "problemMatcher": [],
       "group": "build"
     },
     {
-      "label": "Run HelloWorld.py (WSL)",
+      "label": "Run HelloWorld.py (WSL/Linux)",
       "type": "shell",
       "command": "bash",
       "args": [
@@ -121,29 +121,29 @@
         "cwd": "${workspaceFolder}/uiproject"
       },
       "dependsOn": [
-        "Compile UI file (WSL)"
+        "Compile UI file (WSL/Linux)"
       ],
       "problemMatcher": []
     },
     {
-      "label": "Run all UI steps (WSL)",
+      "label": "Run all UI steps (WSL/Linux)",
       "dependsOrder": "sequence",
       "dependsOn": [
         "Create UI virtual environment",
-        "Install UI dependencies (WSL)",
-        "Compile UI file (WSL)",
-        "Run HelloWorld.py (WSL)"
+        "Install UI dependencies (WSL/Linux)",
+        "Compile UI file (WSL/Linux)",
+        "Run HelloWorld.py (WSL/Linux)"
       ],
       "problemMatcher": []
     },
     {
-      "label": "Run all UI steps",
+      "label": "Run all UI steps (Windows)",
       "dependsOrder": "sequence",
       "dependsOn": [
         "Create UI virtual environment",
-        "Install UI dependencies from requirements.txt",
-        "Compile UI file",
-        "Run HelloWorld.py"
+        "Install UI dependencies (Windows)",
+        "Compile UI file (Windows)",
+        "Run HelloWorld.py (Windows)"
       ],
       "problemMatcher": []
     },
@@ -166,7 +166,7 @@
       "group": "build"
     },
     {
-      "label": "Install QML dependencies from requirements.txt",
+      "label": "Install QML dependencies (Windows)",
       "type": "shell",
       "command": "powershell",
       "args": [
@@ -186,7 +186,7 @@
       "group": "build"
     },
     {
-      "label": "Run QML main.py",
+      "label": "Run QML main.py (Windows)",
       "type": "shell",
       "command": "powershell",
       "args": [
@@ -201,19 +201,19 @@
       },
       "dependsOn": [
         "Create QML virtual environment",
-        "Install QML dependencies from requirements.txt"
+        "Install QML dependencies (Windows)"
       ],
       "dependsOrder": "sequence",
       "problemMatcher": []
     }
     ,
     {
-      "label": "Install QML dependencies (WSL)",
+      "label": "Install QML dependencies (WSL/Linux)",
       "type": "shell",
       "command": "bash",
       "args": [
         "-lc",
-        "source venv/bin/activate && pip install --upgrade -r requirements.txt"
+        "./venv/bin/python -m pip install --upgrade -r requirements.txt"
       ],
       "options": {
         "cwd": "${workspaceFolder}/qmlproject"
@@ -225,19 +225,19 @@
       "group": "build"
     },
     {
-      "label": "Run QML main.py (WSL)",
+      "label": "Run QML main.py (WSL/Linux)",
       "type": "shell",
       "command": "bash",
       "args": [
         "-lc",
-        "source venv/bin/activate && python main.py"
+        "./venv/bin/python main.py"
       ],
       "options": {
         "cwd": "${workspaceFolder}/qmlproject"
       },
       "dependsOn": [
         "Create QML virtual environment",
-        "Install QML dependencies (WSL)"
+        "Install QML dependencies (WSL/Linux)"
       ],
       "dependsOrder": "sequence",
       "problemMatcher": []
