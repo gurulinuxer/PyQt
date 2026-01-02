@@ -76,6 +76,67 @@
       "problemMatcher": []
     },
     {
+      "label": "Install UI dependencies (WSL)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source venv/bin/activate && pip install -r requirements.txt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/uiproject"
+      },
+      "dependsOn": [
+        "Create UI virtual environment"
+      ],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Compile UI file (WSL)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source venv/bin/activate && pyside6-uic form.ui -o ui_form.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/uiproject"
+      },
+      "dependsOn": [
+        "Install UI dependencies (WSL)"
+      ],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run HelloWorld.py (WSL)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source venv/bin/activate && python helloworld.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/uiproject"
+      },
+      "dependsOn": [
+        "Compile UI file (WSL)"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Run all UI steps (WSL)",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Create UI virtual environment",
+        "Install UI dependencies (WSL)",
+        "Compile UI file (WSL)",
+        "Run HelloWorld.py (WSL)"
+      ],
+      "problemMatcher": []
+    },
+    {
       "label": "Run all UI steps",
       "dependsOrder": "sequence",
       "dependsOn": [
@@ -141,6 +202,42 @@
       "dependsOn": [
         "Create QML virtual environment",
         "Install QML dependencies from requirements.txt"
+      ],
+      "dependsOrder": "sequence",
+      "problemMatcher": []
+    }
+    ,
+    {
+      "label": "Install QML dependencies (WSL)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source venv/bin/activate && pip install --upgrade -r requirements.txt"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/qmlproject"
+      },
+      "dependsOn": [
+        "Create QML virtual environment"
+      ],
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Run QML main.py (WSL)",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+        "-lc",
+        "source venv/bin/activate && python main.py"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/qmlproject"
+      },
+      "dependsOn": [
+        "Create QML virtual environment",
+        "Install QML dependencies (WSL)"
       ],
       "dependsOrder": "sequence",
       "problemMatcher": []
